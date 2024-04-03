@@ -3,9 +3,35 @@ import { useState, useEffect } from "react";
 const SelectedContact = ({ selectedContactId, setSelectedContactId }) => {
     const [contact, setContact] = useState(null);
     console.log('SINGLE contact', contact);
+    useEffect(()=>{
+        async function fetchContact() {
+            try {
+                const response = await fetch (
+                    `https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`
+                );
+                const result = await response.json();
+                setContact(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchContact();
+    },[]);
+
     return (
         <>
-        <h1>Hello World</h1>
+        <div>
+            <h1>Contact Information</h1>
+        </div>
+        {contact &&  (
+            <div>
+                <h2>Name: {contact.name} </h2>
+                <h2>Username: {contact.username} </h2>
+                <h2>Phone Number: {contact.phone} </h2>
+                <h2>Email: {contact.email} </h2>
+                {/* /* <------ HOW TO ACESS OBJECTS OF COMPANY --------> */ }
+                </div>
+        )}
         </>
     )
 }
