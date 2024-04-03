@@ -8,7 +8,9 @@ const dummyContacts = [
     { id: 3, name: "BB-8", phone: "888-888-8888", email: "bb8@droids.com" },
   ];
 
- const ContactList = () => {
+// ContactList setSelectedContactId={setSelectedContactId}
+
+ const ContactList = ({ setSelectedContactId }) => {
   const [contacts, setContacts] = useState(dummyContacts);
   // ContactList setSelectedContactId = {setSelectedContactId};
 
@@ -41,7 +43,7 @@ const dummyContacts = [
         <td>Phone</td>
       </tr>
       {contacts.map((contact) => {
-          return <ContactRow key={contact.id} contact={contact} />;
+          return <ContactRow key={contact.id} contact={contact} setSelectedContactId={setSelectedContactId}/>;
         })}
     </tbody>
   </table>
