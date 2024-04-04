@@ -29,7 +29,7 @@ const SelectedContact = ({ selectedContactId, setSelectedContactId }) => {
                 <h2>Username: {contact.username} </h2>
                 <h2>Phone Number: {contact.phone} </h2>
                 <h2>Email: {contact.email} </h2>
-                {/* /* <------ HOW TO ACESS OBJECTS OF COMPANY --------> */ }
+                <h2>Company: {contact.company.name} </h2>
                 </div>
         )}
         </>
